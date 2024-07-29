@@ -36,3 +36,6 @@ body{
     cursor: pointer;
 }
 
+.calculator_button:hover{
+    background-color: #A31621;
+}

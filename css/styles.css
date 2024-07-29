@@ -44,6 +44,10 @@ body{
     background-color: #A31621;
 }
 
+.calculator__button_wide{
+    grid-column: span 2;
+}
+
 @media (max-width: 400px) {
     #display {
       font-size: 1.5rem;

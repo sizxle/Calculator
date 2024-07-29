@@ -29,3 +29,10 @@ body{
     grid-gap: 10px;
 }
 
+.calculator_button{
+    background-color: #90C2E7;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+

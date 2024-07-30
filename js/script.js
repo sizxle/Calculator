@@ -1,5 +1,7 @@
 class Calculator{
 
+    display="";
+
     constructor(displayElement){
         this.displayElement=displayElement;
         this.reset();
@@ -10,36 +12,37 @@ class Calculator{
         this.currentOperand="";
         this.previousOperand="";
         this.operation=undefined;
-        // this.updateDisplay();
+        this.updateDisplay();
     }
 
     appendNumber(number){
         this.display=this.display.toString() + number.toString();
         this.updateDisplay();
     }
-
+    
     updateDisplay(){
         this.displayElement.innerText= this.display;
     }
-
+    
     delete(){
         this.display=this.display.toString().slice(0,-1);
         this.updateDisplay();
     }
-
+    
     operatorSet(operator){
         if(this.display=="") return;
-
+        
+        // console.log("here")
+        // console.log(this.previousOperand);
         if(this.previousOperand!==""){
-            //calulate
+            this.compute();
         }
 
         this.operation=operator;
         this.previousOperand=this.display;
         this.display="";
-        this.updateDisplay;
+        this.updateDisplay();
     }
-
     compute(){
         let results;
 
@@ -65,10 +68,15 @@ class Calculator{
                 return;
         }
 
-        this.display=results;
+        this.display=results.toString();
         this.operation=undefined;
-        this.previousOperand="";
+        this.previousOperand=results.toString();
+        console.log(this.display)
         this.updateDisplay();
+    }
+
+    clear(){
+        this.reset();
     }
 
 }
@@ -87,11 +95,15 @@ document.querySelector("#calculator_buttons").addEventListener("click",(event)=>
     let value= target.value;
 
     switch(value){
+        case "clear":
+            calculator.clear();
+            break;
         case "delete":
             calculator.delete();
             break;
         case "calculate":
             calculator.compute();
+            break;
         case "+":
         case "-":
         case "*":
@@ -105,11 +117,4 @@ document.querySelector("#calculator_buttons").addEventListener("click",(event)=>
             break;
     }
 
-    console.log(target.value);
 })
-
-
-
-    
-
-console.log(displayElement);

@@ -23,7 +23,51 @@ class Calculator{
     }
 
     delete(){
-        this.reset();
+        this.display=this.display.toString().slice(0,-1);
+        this.updateDisplay();
+    }
+
+    operatorSet(operator){
+        if(this.display=="") return;
+
+        if(this.previousOperand!==""){
+            //calulate
+        }
+
+        this.operation=operator;
+        this.previousOperand=this.display;
+        this.display="";
+        this.updateDisplay;
+    }
+
+    compute(){
+        let results;
+
+        const previousOp= parseFloat(this.previousOperand);
+        const currentOp=parseFloat(this.display);
+
+        if(isNaN(previousOp) || isNaN(currentOp)) return;
+
+        switch(this.operation){
+            case "-":
+                results = previousOp - currentOp;
+                break;
+            case "+":
+                results = previousOp + currentOp;
+                break;
+            case "*":
+                results = previousOp * currentOp;
+                break;
+            case "/":
+                results = previousOp / currentOp;
+                break
+            default:
+                return;
+        }
+
+        this.display=results;
+        this.operation=undefined;
+        this.previousOperand="";
         this.updateDisplay();
     }
 
@@ -46,10 +90,14 @@ document.querySelector("#calculator_buttons").addEventListener("click",(event)=>
         case "delete":
             calculator.delete();
             break;
+        case "calculate":
+            calculator.compute();
         case "+":
         case "-":
         case "*":
         case "/":
+            calculator.operatorSet(value);
+            break;
         default:
             if(value==="." || !isNaN(value)){
                 calculator.appendNumber(value);

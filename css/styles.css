@@ -24,13 +24,15 @@ body{
     color:black;
     padding: 20px;
     text-align: right;
-    font-size: 2em;;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 #calculator_buttons{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     grid-gap: 10px;
+    
 }
 
 .calculator_button{
@@ -38,6 +40,7 @@ body{
     padding: 20px;
     font-size: 1.5em;
     cursor: pointer;
+    border: none;
 }
 
 .calculator_button:hover{

@@ -32,8 +32,6 @@ class Calculator{
     operatorSet(operator){
         if(this.display=="") return;
         
-        // console.log("here")
-        // console.log(this.previousOperand);
         if(this.previousOperand!==""){
             this.compute();
         }
@@ -71,7 +69,6 @@ class Calculator{
         this.display=results.toString();
         this.operation=undefined;
         this.previousOperand=results.toString();
-        console.log(this.display)
         this.updateDisplay();
     }
 

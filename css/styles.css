@@ -21,6 +21,7 @@ body{
 
 #display{
     background-color:#CED3DC ;
+    height: 20px;
     color:black;
     padding: 20px;
     text-align: right;
